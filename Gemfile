@@ -2,7 +2,12 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.0'
+# my
+gem 'therubyracer'
 
+gem 'omniauth-rails_csrf_protection', '~> 0.1'
+gem 'omniauth-google-oauth2'
+gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 # Use postgresql as the database for Active Record

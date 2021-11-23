@@ -11,6 +11,15 @@
   </head>
 
   <body>
-    <%= yield %>
+  <% if user_signed_in? %>
+    <%= current_user.email %>
+    <%= link_to 'EXIT', destroy_user_session_path, method: :delete, data: { confirm: 'Do you want to exit?' } %>
+  <% else %>
+    <a href="/auth/google_oauth2">Sign in with Google</a>
+    <%= link_to 'Sign in with out acc', user_session_path %>
+    <% end %>
+    <p class="notice"><%#= notice %></p>
+  <p class="alert"><%#= alert %></p>
+  <%= yield %>
   </body>
 </html>

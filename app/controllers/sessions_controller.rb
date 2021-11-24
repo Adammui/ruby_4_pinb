@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    @user = nil
     redirect_to root_path
   end
 
@@ -15,3 +16,9 @@ class SessionsController < ApplicationController
     request.env['omniauth.auth']
   end
 end
+#class Users::SessionsController < Devise::SessionsController
+#  def create
+#   @user = User.find(params[:id])
+#    session[:user_id] = @user.id
+#  end
+#end

@@ -1,6 +1,25 @@
+<% provide :head_tags do %>
+  <meta name='turbolinks-visit-control' content='reload'>
+  <script>
+      let address = "<%= "#{@user.country}, #{@user.city}, #{@user.adress}" %>";
+      document.addEventListener("DOMContentLoaded", function(){
+          initMap(address)
+      });
+      let log = document.getElementById('user_city');
+      log.addEventListener('change', function(){
+          initMap(address)});
+  </script>
+<% end %>
+
+
 <h1>Editing User</h1>
 
 <%= render 'form', user: @user %>
+
+<p>
+  <strong>Map:</strong>
+  <div id="map"></div>
+</p>
 
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>

@@ -8,6 +8,9 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA6LI_hichjUjuNQFPQ-UAtRHVrpeA1aKw' %>
+    <%= javascript_pack_tag 'places', 'data-turbolinks-track': 'reload' %>
+    <%= yield(:head_tags) %>
   </head>
 
   <body>

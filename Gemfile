@@ -3,8 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.0'
 # my
+#
 gem 'therubyracer'
-
 gem 'omniauth-rails_csrf_protection', '~> 0.1'
 gem 'omniauth-google-oauth2'
 gem 'devise'

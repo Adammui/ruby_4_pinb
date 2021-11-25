@@ -14,8 +14,7 @@
   </head>
 
   <body>
-    <%= link_to 'EXIT not Gogl', destroy_user_session_path, method: :delete, data: { confirm: 'Do you want to exit?' } %>
-  <% if user_signed_in? %>
+    <p><%= link_to 'EXIT not Gogl', destroy_user_session_path, method: :delete, data: { confirm: 'Do you want to exit?' } %></p><% if user_signed_in? %>
     <%= link_to 'EXIT G', logout_path,  data: { confirm: 'Do you want to exit?' } %>
     <%= current_user.email %>
   <% else %>

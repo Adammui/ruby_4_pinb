@@ -4,6 +4,7 @@ class AdvertisementsController < ApplicationController
   # GET /advertisements or /advertisements.json
   def index
     @advertisements = Advertisement.all
+    @users = User.all
   end
 
   # GET /advertisements/1 or /advertisements/1.json

@@ -16,11 +16,13 @@
   <body>
     <p><%= link_to 'EXIT not Gogl', destroy_user_session_path, method: :delete, data: { confirm: 'Do you want to exit?' } %></p><% if user_signed_in? %>
     <%= link_to 'EXIT G', logout_path,  data: { confirm: 'Do you want to exit?' } %>
-    <%= current_user.email %>
+    Current user: <%= current_user.email %>
   <% else %>
     <a href="/auth/google_oauth2">Sign in with Google</a>
     <%= link_to 'Sign in with our acc', user_session_path %>
     <% end %>
+    <%= link_to 'See all users', users_path %>
+    <%= link_to 'See all advertisements', advertisements_path %>
     <p class="notice"><%#= notice %></p>
   <p class="alert"><%#= alert %></p>
   <%= yield %>

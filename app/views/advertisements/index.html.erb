@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Advertisements</h1>
-<%= link_to 'New Advertisement', new_advertisement_path %>
-<%= link_to 'See all users', users_path %>
+<p><%= link_to 'New Adv', new_advertisement_path %>
+</p>
 
 <table>
   <thead>
@@ -17,7 +17,13 @@
   <tbody>
     <% @advertisements.each do |advertisement| %>
       <tr>
-        <td><%= advertisement.user_id %></td>
+        <td>
+          <% @users.each do |u| %>
+            <% if u.id == advertisement.user_id %>
+              <%= u.login %>
+            <% end %>
+          <% end %>
+        </td>
         <td><%= advertisement.text %></td>
         <td><%= image_tag(advertisement.image_url.to_s) %></td>
         <td><%= link_to 'Show', advertisement %></td>
@@ -27,7 +33,4 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
 

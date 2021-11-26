@@ -19,7 +19,7 @@
       <tr>
         <td><%= advertisement.user_id %></td>
         <td><%= advertisement.text %></td>
-        <td><%= advertisement.img %></td>
+        <td><%= image_tag(advertisement.image_url.to_s) %></td>
         <td><%= link_to 'Show', advertisement %></td>
         <td><%= link_to 'Edit', edit_advertisement_path(advertisement) %></td>
         <td><%= link_to 'Destroy', advertisement, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -12,7 +12,7 @@
 
 <p>
   <strong>Img:</strong>
-  <%= @advertisement.img %>
+  <%= image_tag(@advertisement.image_url.to_s) %>
 </p>
 
 <%= link_to 'Edit', edit_advertisement_path(@advertisement) %> |

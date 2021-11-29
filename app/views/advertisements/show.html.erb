@@ -2,7 +2,8 @@
 
 <p>
   <strong>User:</strong>
-  <%= @advertisement.user_id %>
+  <% user = User.find( @advertisement.user_id)%>
+  <%= user.full_name %>
 </p>
 
 <p>
@@ -17,3 +18,31 @@
 
 <%= link_to 'Edit', edit_advertisement_path(@advertisement) %> |
 <%= link_to 'Back', advertisements_path %>
+
+<h2>Comments</h2>
+<p>
+  <% @advertisement.comments.each do |comment| %>
+    <strong>Commenter:</strong>
+    <% user = User.find(comment.user_id)%>
+    <%= user.full_name %>
+  </p>
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.message %>|
+    <td><%= link_to 'Edit', edit_comment_path(comment, @advertisement) %></td>
+    <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </p>
+
+<% end %>
+<h2>Add a comment:</h2>
+<%= form_with model: [ @advertisement, @advertisement.comments.build ] do |form| %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.hidden_field :advertisement_id, value: @advertisement.id %>
+  <p>
+    <%= form.label :message %><br>
+    <%= form.text_area :message %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

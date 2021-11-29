@@ -10,15 +10,11 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :advertisment_id %>
-    <%= form.text_field :advertisment_id %>
+<%# либо тут ниже изменить на просто юзей айди и рекламы айди %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <div class="field" hidden="true">
+    <%= form.label :advertisement_id %>
+    <%= form.text_field :advertisement_id %>
   </div>
 
   <div class="field">

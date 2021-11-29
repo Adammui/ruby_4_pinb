@@ -4,7 +4,7 @@
 <p><%= link_to 'New Adv', new_advertisement_path %>
 </p>
 
-<table>
+<!--<table>
   <thead>
     <tr>
       <th>User</th>
@@ -14,23 +14,36 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody>-->
     <% @advertisements.each do |advertisement| %>
-      <tr>
-        <td>
-          <% @users.each do |u| %>
-            <% if u.id == advertisement.user_id %>
-              <%= u.login %>
-            <% end %>
-          <% end %>
-        </td>
-        <td><%= advertisement.text %></td>
-        <td><%= image_tag(advertisement.image_url.to_s) %></td>
-        <td><%= link_to 'Show', advertisement %></td>
-        <td><%= link_to 'Edit', edit_advertisement_path(advertisement) %></td>
-        <td><%= link_to 'Destroy', advertisement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <!--<tr>
+        <td>-->
+      <% @users.each do |u| %>
+      <% if u.id == advertisement.user_id %>
+        <h1>Post made by <%= u.login %></h1>
+      <% end %>
+      <% end %>
+    <p><%= advertisement.text %></p>
+    <p><%= image_tag(advertisement.image_url.to_s) %></p>
+    <p><td><%= link_to 'Show', advertisement %></td>
+    <td><%= link_to 'Edit', edit_advertisement_path(advertisement) %></td>
+    <td><%= link_to 'Destroy', advertisement, method: :delete, data: { confirm: 'Are you sure?' } %></td></p>
+
+  <h3>First comment</h3>
+  <p>
+    <% advertisement.comments.each do |c| %>
+      <strong>Commenter:</strong>
+      <% user = User.find(c.user_id)%>
+      <%= user.full_name %>
+      </p>
+      <p>
+        <strong>Comment:</strong>
+        <%= c.message %>
+      </p>
+      <% break %>
     <% end %>
+<% end %>
+<!--
   </tbody>
-</table>
+</table> -->
 

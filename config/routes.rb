@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :advertisements do
     resources :comments
   end
-
+  resources :comments
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get 'login', to: redirect('/auth/google_oauth2'), as: 'login'

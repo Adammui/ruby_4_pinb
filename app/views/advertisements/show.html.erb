@@ -36,7 +36,7 @@
 <% end %>
 <h2>Add a comment:</h2>
 <%= form_with model: [ @advertisement, @advertisement.comments.build ] do |form| %>
-  <%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.hidden_field :user_id, value: current_user_.id %>
   <%= form.hidden_field :advertisement_id, value: @advertisement.id %>
   <p>
     <%= form.label :message %><br>

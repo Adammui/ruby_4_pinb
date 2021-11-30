@@ -14,6 +14,7 @@
   </head>
 
   <body>
+  <header>
   <%# if :authenticate_user! == false %>
   <% if user_signed_in? %>
     <p><%= link_to 'EXIT not Gogl', destroy_user_session_path, method: :delete, data: { confirm: 'Do you want to exit?' } %>
@@ -25,10 +26,23 @@
     <a href="/auth/google_oauth2">Sign in with Google</a>
     <%= link_to 'Sign in with our acc', user_session_path %>
     <% end %>
+    <br>
     <%= link_to 'See all users', users_path %>
     <%= link_to 'See all advertisements', advertisements_path %>
-    <p class="notice"><%#= notice %></p>
-  <p class="alert"><%#= alert %></p>
+    <% if current_user_&.admin? %>
+    |<%= link_to "Items", advertisements_path %> |
+    <%= link_to "Users", users_path %> |
+    <%= link_to "Roles", roles_path %>
+  <% end %>
+  </header>
+  <div>
+    <h1 class="field_with_errors"><% flash.each do |name, msg| %>
+        <% if name.to_s == 'alert' %>
+          <%= content_tag :div, msg, id: "flash_#{name}" %>
+        <% end %>
+      <% end %>
+    </h1>
+  </div>
   <%= yield %>
   </body>
 </html>

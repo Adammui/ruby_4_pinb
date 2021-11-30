@@ -1,5 +1,7 @@
 class User < ApplicationRecord
-  has_many :comments
+  has_many :comments, dependent: :destroy
+  belongs_to :role
+  before_validation :assign_role
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and
   devise :database_authenticatable, :registerable,
@@ -25,4 +27,21 @@ class User < ApplicationRecord
     end
     user
   end
+
+  def assign_role
+    self.role = Role.find_by name: 'Regular' if role.nil?
+  end
+
+  def admin?
+    role.name == 'Admin'
+  end
+
+  def moderator?
+    role.name == 'Moderator'
+  end
+
+  def regular?
+    role.name == 'Regular'
+  end
+
 end

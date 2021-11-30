@@ -1,6 +1,7 @@
 class AdvertisementsController < ApplicationController
-  before_action :set_advertisement, only: %i[ show edit update destroy ]
-
+  #before_action :set_advertisement, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
+  load_and_authorize_resource
   # GET /advertisements or /advertisements.json
   def index
     @advertisements = Advertisement.all
@@ -13,7 +14,7 @@ class AdvertisementsController < ApplicationController
 
   # GET /advertisements/new
   def new
-    @advertisement = Advertisement.new
+    #@advertisement = Advertisement.new
   end
 
   # GET /advertisements/1/edit
@@ -22,7 +23,7 @@ class AdvertisementsController < ApplicationController
 
   # POST /advertisements or /advertisements.json
   def create
-    @advertisement = Advertisement.new(advertisement_params)
+    #@advertisement = Advertisement.new(advertisement_params)
 
     respond_to do |format|
       if @advertisement.save
@@ -59,9 +60,9 @@ class AdvertisementsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_advertisement
-      @advertisement = Advertisement.find(params[:id])
-    end
+  # def set_advertisement
+  #   @advertisement = Advertisement.find(params[:id])
+  # end
 
     # Only allow a list of trusted parameters through.
     def advertisement_params

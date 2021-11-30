@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.0'
 # my
+gem "cancancan", "~> 3.3"
 gem 'rack-cors'
 gem 'carrierwave'
 gem 'therubyracer'
@@ -61,3 +62,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+

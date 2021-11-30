@@ -2,8 +2,7 @@
 
 <p>
   <strong>User:</strong>
-  <% user = User.find( @advertisement.user_id)%>
-  <%= user.full_name %>
+  <% @advertisement.user.full_name%>
 </p>
 
 <p>

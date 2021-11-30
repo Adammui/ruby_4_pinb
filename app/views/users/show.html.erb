@@ -9,7 +9,10 @@
 <% end %>
 
 <p id="notice"><%= notice %></p>
-
+<p>
+  <strong>Role:</strong>
+  <%= @user.role.name %>
+</p>
 <p>
   <strong>Login:</strong>
   <%= @user.login %>

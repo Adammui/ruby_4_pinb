@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Advertisements</h1>
-<p><%= link_to 'New Adv', new_advertisement_path %>
+<p><%#todo this thing with can everywhere%>
+      <%if can? :create, Advertisement %>
+    <%= link_to 'New Adv', new_advertisement_path %>
+  <% end %>
 </p>
 
 <!--<table>
@@ -26,8 +29,15 @@
     <p><%= advertisement.text %></p>
     <p><%= image_tag(advertisement.image_url.to_s) %></p>
     <p><td><%= link_to 'Show', advertisement %></td>
-    <td><%= link_to 'Edit', edit_advertisement_path(advertisement) %></td>
-    <td><%= link_to 'Destroy', advertisement, method: :delete, data: { confirm: 'Are you sure?' } %></td></p>
+    <td>
+      <% if can? :update, Advertisement %>
+        <%= link_to 'Edit', edit_advertisement_path(advertisement) %>
+      <% end %>
+    </td>
+    <td><% if can? :destroy, Advertisement %>
+        <%= link_to 'Destroy', advertisement, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </td></p>
 
   <h3>First comment</h3>
   <p>

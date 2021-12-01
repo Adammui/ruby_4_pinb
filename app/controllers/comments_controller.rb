@@ -29,7 +29,6 @@ class CommentsController < ApplicationController
         format.html { redirect_to advertisement_path(@adv), notice: "Comment was successfully created." }
         format.json { redirect_to advertisement_path(@adv), status: :created, location: @comment }
       else
-        format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end

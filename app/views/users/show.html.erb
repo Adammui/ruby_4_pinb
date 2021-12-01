@@ -9,6 +9,11 @@
 <% end %>
 
 <p id="notice"><%= notice %></p>
+<% if can? :update, @user %>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+  <%end %>
+<%= link_to 'Back', users_path %>
+
 <p>
   <strong>Role:</strong>
   <%= @user.role.name %>
@@ -57,7 +62,7 @@
   <strong>Zip:</strong>
   <%= @user.zip %>
 </p>
-
+<!--
 <p>
   <strong>Password:</strong>
   <%= @user.password %>
@@ -67,11 +72,8 @@
   <strong>Password confirm:</strong>
   <%= @user.password_confirm %>
 </p>
-
+-->
 <p>
   <strong>Map:</strong>
   <div id="map"></div>
 </p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>

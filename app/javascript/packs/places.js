@@ -5,7 +5,7 @@ window.initMap= function (address){
             let myCoords = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
             drawMap(myCoords);
         } else {
-            alert('Geocode was not successful for the following reason: ' + status);
+           // alert('Geocode was not successful for the following reason: ' + status);
         }
     });
 }

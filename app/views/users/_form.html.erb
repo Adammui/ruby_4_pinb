@@ -10,13 +10,14 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :role_id %>
-    <%= collection_select(
-          :user, :role_id, Role.all, :id, :name, { prompt: true }
-        ) %>
-  </div>
+  <%if current_user_.role.name=='Admin' %>
+    <div class="field">
+      <%= form.label :role_id %>
+      <%= collection_select(
+            :user, :role_id, Role.all, :id, :name, { prompt: true }
+          ) %>
+    </div>
+  <%end %>
   <div class="field">
     <%= form.label :login %>
     <%= form.text_field :login %>
@@ -64,12 +65,12 @@
 
   <div class="field">
     <%= form.label :password %>
-    <%= form.number_field :password %>
+    <%= form.password_field :password %>
   </div>
 
   <div class="field">
     <%= form.label :password_confirm %>
-    <%= form.number_field :password_confirm %>
+    <%= form.password_field :password_confirm %>
   </div>
 
   <div class="actions">

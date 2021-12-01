@@ -33,15 +33,21 @@ class User < ApplicationRecord
   end
 
   def admin?
+    if role!= nil
     role.name == 'Admin'
+    end
   end
 
   def moderator?
+    if role!= nil
     role.name == 'Moderator'
+    end
   end
 
   def regular?
+    if role!= nil
     role.name == 'Regular'
+    end
   end
 
 end

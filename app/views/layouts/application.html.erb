@@ -14,35 +14,38 @@
   </head>
 
   <body>
-  <header>
-  <%# if :authenticate_user! == false %>
-  <% if user_signed_in? %>
-    <p><%= link_to 'EXIT not Gogl', destroy_user_session_path, method: :delete, data: { confirm: 'Do you want to exit?' } %>
-      Current user : <%= current_user.email %>
-    </p><% elsif user_signed_in_? %>
-    <%= link_to 'EXIT G', logout_path,  data: { confirm: 'Do you want to exit?' } %>
-    Current user: <%= current_user_.email %>
-  <% else %>
-    <a href="/auth/google_oauth2">Sign in with Google</a>
-    <%= link_to 'Sign in with our acc', user_session_path %>
-    <% end %>
-    <br>
-    <%= link_to 'See all users', users_path %>
-    <%= link_to 'See all advertisements', advertisements_path %>
-    <% if current_user_&.admin? %>
-    |<%= link_to "Items", advertisements_path %> |
-    <%= link_to "Users", users_path %> |
-    <%= link_to "Roles", roles_path %>
-  <% end %>
-  </header>
-  <div>
-    <h1 class="field_with_errors"><% flash.each do |name, msg| %>
-        <% if name.to_s == 'alert' %>
-          <%= content_tag :div, msg, id: "flash_#{name}" %>
+    <header>
+    <%# if :authenticate_user! == false %>
+      <p class="reg">
+        <% if user_signed_in? %>
+          <%= link_to 'EXIT N', destroy_user_session_path, method: :delete, data: { confirm: 'Do you want to exit?' } %>
+          | Current user : <%= current_user.email %> | You are <%= current_user_.role.name%>
+        <% elsif user_signed_in_? %>
+          <%= link_to 'EXIT GOGL', logout_path,  data: { confirm: 'Do you want to exit?' } %>
+          | Current user: <%= current_user_.email %> | You are <%= current_user_.role.name %>
+        <% else %>
+          <%= link_to 'Sign up', sign_up_path %> |
+          <a href="/auth/google_oauth2">Sign in with Google</a> |
+          <%= link_to 'Sign in with your account', user_session_path %>
         <% end %>
-      <% end %>
-    </h1>
-  </div>
-  <%= yield %>
+      </p>
+      <p class="menu">
+        <%= link_to 'See all users', users_path %> |
+        <%= link_to 'See all advertisements', advertisements_path %>
+        <% if current_user_&.admin? %> |
+          <%= link_to "Roles", roles_path %>
+        <% end %>
+      </p>
+    </header>
+    <div class="body">
+      <h1 class="field_with_errors"><% flash.each do |name, msg| %>
+          <% if name.to_s == 'alert' %>
+            <%= content_tag :div, msg, id: "flash_#{name}" %>
+          <% end %>
+        <% end %>
+      </h1>
+
+    <%= yield %>
+    </div>
   </body>
 </html>

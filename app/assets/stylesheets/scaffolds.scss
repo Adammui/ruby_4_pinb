@@ -90,3 +90,12 @@ label {
   margin-left: 100px;
 
 }
+.text-160{
+  max-width: 800px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+
+
+}

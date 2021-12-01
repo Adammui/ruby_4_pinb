@@ -1,12 +1,27 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Advertisements</h1>
 <p><%#todo this thing with can everywhere%>
       <%if can? :create, Advertisement %>
     <%= link_to 'New Adv', new_advertisement_path %>
   <% end %>
 </p>
+<script> function f() {
 
+    const cropElement = document.querySelectorAll('.text-160'), // выбор элементов
+        size = 160                                             // кол-во символов
+    endCharacter = '...';                                  // окончание
+
+    cropElement.forEach(el => {
+        let text = el.innerHTML;
+
+        if (el.innerHTML.length > size) {
+            text = text.substr(0, size);
+            el.innerHTML = text + endCharacter;
+        }
+    });
+
+};
+</script>
 <!--<table>
   <thead>
     <tr>
@@ -26,7 +41,7 @@
         <h1>Post made by <%= u.login %></h1>
       <% end %>
       <% end %>
-    <p><%= advertisement.text %></p>
+    <p class="text-160" onload="f()"><%= advertisement.text %></p>
     <p><%= image_tag(advertisement.image_url.to_s) %></p>
     <p><td><%= link_to 'Show', advertisement %></td>
     <td>
@@ -56,4 +71,5 @@
 <!--
   </tbody>
 </table> -->
+
 

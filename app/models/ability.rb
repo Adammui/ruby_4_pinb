@@ -16,7 +16,7 @@ class Ability
 
       can :manage, Advertisement
       can :manage, Comment
-    elsif user.regular?
+    else
 
       can :read, Advertisement
       can :create, Advertisement
@@ -34,10 +34,6 @@ class Ability
       can :update, Comment, user: user
       return unless user.present?
       can :destroy, Comment, user: user
-    else
-
-      can :read, Advertisement
-      can :read, User
     end
   end
 end

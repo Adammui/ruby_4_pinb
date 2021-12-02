@@ -14,11 +14,4 @@ Devise.setup do |config|
   config.reset_password_within = 6.hours
   config.sign_out_via = :delete
 
-
- #Add your ID and secret here
- #ID first, secret second
- #config.omniauth :google_oauth2,
- #               "1089113857854-fiv9uuplintt8jm2la1986ld8hpc2kbf.apps.googleusercontent.com",
- #                "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"
-
 end

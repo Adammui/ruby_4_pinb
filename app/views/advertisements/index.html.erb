@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <h1>Advertisements</h1>
-<p><%#todo this thing with can everywhere%>
+<p>
       <%if can? :create, Advertisement %>
     <%= link_to 'New Adv', new_advertisement_path %>
   <% end %>

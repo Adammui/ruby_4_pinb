@@ -16,8 +16,8 @@ Rails.application.configure do
     domain:'gmail.com', #ENV[“GMAIL_DOMAIN”],
     authentication: 'plain',
     enable_starttls_auto: true,
-    user_name: Rails.application.credentials[:gmail_username], #ENV[“GMAIL_USERNAME”],
-    password: Rails.application.credentials[:gmail_pass],#ENV[“GMAIL_PASSWORD”]
+    user_name: Rails.application.credentials.dig(:production, :gmail_username), #ENV[“GMAIL_USERNAME”],
+    password: Rails.application.credentials.dig(:production, :gmail_pass)#ENV[“GMAIL_PASSWORD”]
   }
   # Do not eager load code on boot.
   config.eager_load = false

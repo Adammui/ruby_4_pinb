@@ -22,7 +22,7 @@ class User < ApplicationRecord
    unless user
       password = Devise.friendly_token[0,20]
      user = User.create( id: access_token.id, full_name: data["name"], email: data["email"],
-                        password: password, password_confirmation: password
+                         password: password, password_confirmation: password
     )
     end
     user
@@ -56,5 +56,4 @@ class User < ApplicationRecord
     role.name == 'Moderator'
     end
   end
-
 end

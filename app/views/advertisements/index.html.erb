@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 <h1>Advertisements</h1>
+<p><%= form_tag advertisements_path, method: :get do %>
+<%= text_field_tag 'term', params[:term], placeholder: "Enter user's name or surname" %>
+<%= submit_tag 'Search!' %>
+<% end %></p>
 <p>
       <%if can? :create, Advertisement %>
     <%= link_to 'New Adv', new_advertisement_path %>
@@ -41,7 +45,15 @@
         <h1>Post made by <%= u.login %></h1>
       <% end %>
       <% end %>
-    <p class="text-160" onload="f()"><%= advertisement.text %></p>
+  <div>
+    <p class="text-160" onload="f()">
+    <% if advertisement.respond_to?(:pg_search_highlight) %>
+      <%= advertisement.pg_search_highlight.html_safe %>
+    <% else %>
+      <%= advertisement.text %>
+    <% end %>
+    </p>
+  </div>
     <p><%= image_tag(advertisement.image_url.to_s) %></p>
     <p><td><%= link_to 'Show', advertisement %></td>
     <td>

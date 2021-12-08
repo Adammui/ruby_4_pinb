@@ -3,9 +3,13 @@ class AdvertisementsController < ApplicationController
   before_action :authenticate, except: :index
   load_and_authorize_resource except: :index
   # GET /advertisements or /advertisements.json
-  def index
-    @advertisements = Advertisement.all
+  def index 
     @users = User.all
+    if params[:term]
+      @advertisements = Advertisement.search_by_adv(params[:term]).with_pg_search_highlight
+    else
+      @advertisements = Advertisement.all
+    end
   end
 
   # GET /advertisements/1 or /advertisements/1.json

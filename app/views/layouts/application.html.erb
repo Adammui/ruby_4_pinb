@@ -15,27 +15,26 @@
 
   <body>
     <header>
-      <p class="reg">
-        <% if user_signed_in? %>
-          <%= link_to 'EXIT N', destroy_user_session_path, method: :delete, data: { confirm: 'Do you want to exit?' } %>
-          | Current user : <%= current_user.email %> | You are <%= current_user_.role.name%>
-        <% elsif user_signed_in_? %>
-          <%= link_to 'EXIT GOGL', logout_path,  data: { confirm: 'Do you want to exit?' } %>
-          | Current user: <%= current_user_.email %> | You are <%= current_user_.role.name %>
-        <% else %>
-          <%= link_to 'Sign up', sign_up_path %> |
-          <a href="/auth/google_oauth2">Sign in with Google</a> |
-          <%= link_to 'Sign in with your account', user_session_path %>
-        <% end %>
-      </p>
-      <p class="menu">
+      <div class="menu">
         <%= link_to 'See all users', users_path %> |
         <%= link_to 'See all advertisements', advertisements_path %>
         <% if current_user_&.admin? %> |
           <%= link_to "Roles", roles_path %>
         <% end %>
-      </p>
+          <% if user_signed_in? %>
+            <%= link_to 'EXIT N', destroy_user_session_path, method: :delete, data: { confirm: 'Do you want to exit?' } %>
+            | Current user : <%= current_user.email %> | You are <%= current_user_.role.name%>
+          <% elsif user_signed_in_? %>
+            <%= link_to 'EXIT GOGL', logout_path,  data: { confirm: 'Do you want to exit?' } %>
+            | Current user: <%= current_user_.email %> | You are <%= current_user_.role.name %>
+          <% else %>
+            |<%= link_to 'Sign up', sign_up_path %> |
+            <a href="/auth/google_oauth2">Sign in with Google</a> |
+            <%= link_to 'Sign in with your account', user_session_path %>
+          <% end %>
+      </div>
     </header>
+
     <div class="body">
       <h1 class="field_with_errors"><% flash.each do |name, msg| %>
           <% if name.to_s == 'alert' %>

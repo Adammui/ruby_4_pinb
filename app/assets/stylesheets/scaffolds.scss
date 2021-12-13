@@ -17,13 +17,12 @@ p {
 h1,h3{
   margin-left:150px;
 }
-p.reg {
+div.menu {
+  width: auto;
   text-align: right;
-  margin-right:20px;
-}
-p.menu {
-  text-align: left;
-  margin-left:20px;
+  margin-right:30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -104,4 +103,8 @@ b {
   background-color: rebeccapurple;
   font-style: italic;
   font-size: larger;
+}
+p.search
+{
+  margin-left: 100px;
 }

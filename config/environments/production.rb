@@ -18,16 +18,6 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
-
-  Rails.application.config.middleware.use OmniAuth::Builder do
-    provider :google_oauth2,
-             Rails.application.credentials.dig(:production, :Client_ID),
-             Rails.application.credentials.dig(:production, :Client_secret)
-  end
-  OmniAuth.config.allowed_request_methods = %i[get]
-  OmniAuth.config.allowed_request_methods = [:post, :get]
-  OmniAuth.config.silence_get_warning = true
-
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.

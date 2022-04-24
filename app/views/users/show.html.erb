@@ -1,17 +1,17 @@
-<% provide :head_tags do %>
-  <meta name='turbolinks-visit-control' content='reload'>
+<!--<#% provide :head_tags do %>
+<meta name='turbolinks-visit-control' content='reload'>
   <script>
-      let address = "<%= "#{@user.country}, #{@user.city}, #{@user.adress}" %>";
+      let address = "<#%= "#{@user.country}, #{@user.city}, #{@user.adress}" %>";
       document.addEventListener("DOMContentLoaded", function(){
           initMap(address)
       });
   </script>
-<% end %>
-
+<#% end %>
+-->
 <p id="notice"><%= notice %></p>
 <% if can? :update, @user %>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-  <%end %>
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+<%end %>
 <%= link_to 'Back', users_path %>
 
 <p>
@@ -39,14 +39,16 @@
 </p>
 
 <p>
+  <strong>State:</strong>
+  <%= @user.state %>
+</p>
+<!--
+<p>
   <strong>Adress:</strong>
   <%= @user.adress %>
 </p>
 
-<p>
-  <strong>State:</strong>
-  <%= @user.state %>
-</p>
+
 
 <p>
   <strong>City:</strong>
@@ -62,7 +64,7 @@
   <strong>Zip:</strong>
   <%= @user.zip %>
 </p>
-<!--
+
 <p>
   <strong>Password:</strong>
   <%= @user.password %>
@@ -72,8 +74,8 @@
   <strong>Password confirm:</strong>
   <%= @user.password_confirm %>
 </p>
--->
+
 <p>
   <strong>Map:</strong>
   <div id="map"></div>
-</p>
+</p>-->

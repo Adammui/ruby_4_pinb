@@ -10,6 +10,7 @@ gem 'therubyracer'
 gem 'omniauth-rails_csrf_protection', '~> 0.1'
 gem 'omniauth-google-oauth2'
 gem 'devise'
+gem "simple_token_authentication", "~> 1.0"
 gem 'pg_search'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'

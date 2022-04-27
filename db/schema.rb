@@ -46,11 +46,7 @@ ActiveRecord::Schema.define(version: 2021_11_30_130808) do
     t.string "full_name"
     t.date "birthday"
     t.string "email"
-    t.string "adress"
-    t.string "state"
-    t.string "city"
-    t.string "country"
-    t.string "zip"
+    t.string "authentication_token"
     t.integer "password"
     t.integer "password_confirm"
     t.datetime "created_at", precision: 6, null: false

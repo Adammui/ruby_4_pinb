@@ -29,11 +29,6 @@
         <td><%= user.full_name %></td>
         <td><%= user.birthday %></td>
         <td><%= user.email %></td>
-        <td><%= user.adress %></td>
-        <td><%= user.state %></td>
-        <td><%= user.city %></td>
-        <td><%= user.country %></td>
-        <td><%= user.zip %></td>
         <td><%= link_to 'Show', user %></td>
         <% if can? :update, user %>
           <td><%= link_to 'Edit', edit_user_path(user) %></td>

@@ -2,6 +2,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user_, :user_signed_in_?
 
+  def require_authentication
+    # authenticate_or_request_with_http_basic do |u,p|
+    #   user = User.find_by(email: u)
+    #   true if user && user.authenticate(p)
+    # end
+  end
+
   def authenticate
     redirect_to :login unless user_signed_in_?
   end

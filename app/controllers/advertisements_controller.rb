@@ -1,6 +1,6 @@
 class AdvertisementsController < ApplicationController
   #before_action :set_advertisement, only: %i[ show edit update destroy ]
-  before_action :authenticate, except: :index
+  before_action :authenticate, :require_authentication, except: :index
   load_and_authorize_resource except: :index
   # GET /advertisements or /advertisements.json
   def index 

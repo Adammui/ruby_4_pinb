@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   end
   resources :comments
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
   get 'login', to: redirect('/auth/google_oauth2'), as: 'login'
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'sign_out', to: 'sessions#destroy'

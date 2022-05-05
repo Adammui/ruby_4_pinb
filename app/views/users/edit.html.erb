@@ -1,15 +1,15 @@
-<% provide :head_tags do %>
-  <meta name='turbolinks-visit-control' content='reload'>
+<#% provide :head_tags do %>
+  <!--<meta name='turbolinks-visit-control' content='reload'>
   <script>
-      let address = "<%= "#{@user.country}, #{@user.city}, #{@user.adress}" %>";
+      let address = "<#%= "#{@user.country}, #{@user.city}, #{@user.adress}" %>";
       document.addEventListener("DOMContentLoaded", function(){
           initMap(address)
       });
       let log = document.getElementById('user_city');
       log.addEventListener('change', function(){
           initMap(address)});
-  </script>
-<% end %>
+  </script>-->
+<#% end %>
 
 
 <h1>Editing User</h1>

@@ -1,4 +1,4 @@
-window.initMap= function (address){
+/*window.initMap= function (address){
     let geocoder = new google.maps.Geocoder();
     geocoder.geocode( { 'address': address}, function(results, status) {
         if (status == 'OK') {
@@ -19,4 +19,4 @@ window.drawMap =function (myCoords) {
         position: myCoords,
         map: map
     });
-}
+}*/

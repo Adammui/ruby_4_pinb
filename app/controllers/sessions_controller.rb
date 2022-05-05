@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   acts_as_token_authentication_handler_for User, fallback: :none
-  protect_from_forgery with: :null_session, if: :json_request?
+
   def create
     @user = User.find_or_create_from_auth_hash(auth_hash)
     session[:user_id] = @user.id

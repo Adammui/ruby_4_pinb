@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'sign_out', to: 'sessions#destroy'
   get 'sign_up',to: redirect('/users/sign_up'), as: 'sign_up'
   get 'auth/failure', to: redirect('/')
-  get 'me', to: 'users#show', as: 'me'
+  get 'token_auth', to: 'sessions#token_auth', as: 'token_auth'
   get 'logout', to: 'sessions#destroy', as: 'logout'
   root 'advertisements#index'
 end

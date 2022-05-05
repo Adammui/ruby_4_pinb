@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_, :user_signed_in_?
   acts_as_token_authentication_handler_for User, fallback: :none
 
+
   def require_authentication
     # authenticate_or_request_with_http_basic do |u,p|
     #   user = User.find_by(email: u)

@@ -6,6 +6,16 @@ class SessionsController < ApplicationController
     session[:user_id] = @user.id
     redirect_to root_path
   end
+  def destroy
+    session[:user_id] = nil
+    @user = nil
+    redirect_to root_path
+  end
+
+  def auth_hash
+    request.env['omniauth.auth']
+  end
+
   def token_auth
     user= User.find_by_email(params[:email])
     encrypted_password = User.new(password: params[:password]).encrypted_password
@@ -26,23 +36,8 @@ class SessionsController < ApplicationController
       end
     end
   end
-  def respond_with_authentication_token(resource)
-    render json: {
-      success: true,
-      auth_token: resource.authentication_token,
-      email: resource.email
-    }
-  end
-  def destroy
-    session[:user_id] = nil
-    @user = nil
-    redirect_to root_path
-  end
-
-  def auth_hash
-    request.env['omniauth.auth']
-  end
 end
+
 #class Users::SessionsController < Devise::SessionsController
 #  def create
 #   @user = User.find(params[:id])

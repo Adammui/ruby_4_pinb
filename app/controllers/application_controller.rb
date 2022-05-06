@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user_, :user_signed_in_?
-  acts_as_token_authentication_handler_for User, fallback: :none
+  acts_as_token_authentication_handler_for User, fallback: :devise
 
 
   def require_authentication

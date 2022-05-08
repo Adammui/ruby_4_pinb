@@ -81,6 +81,7 @@ class AdvertisementsController < ApplicationController
         format.json { render json: @advertisement.errors, status: :unprocessable_entity }
       end
     end
+
   end
   def destroy_api
     @advertisement.destroy

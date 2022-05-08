@@ -62,6 +62,33 @@ class AdvertisementsController < ApplicationController
     end
   end
 
+  def create_api
+    respond_to do |format|
+      @advertisement = Advertisement.new(advertisement_params)
+      if @advertisement.save
+        format.json { render :show, status: :created, location: @advertisement }
+      else
+        format.json { render json: @advertisement.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  def update_api
+    respond_to do |format|
+      @advertisement = Advertisement.find_by id: params[:id]
+      if @advertisement.update(advertisement_params)
+        format.json { render :show, status: :ok, location: @advertisement }
+      else
+        format.json { render json: @advertisement.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  def destroy_api
+    @advertisement.destroy
+    respond_to do |format|
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
   # def set_advertisement

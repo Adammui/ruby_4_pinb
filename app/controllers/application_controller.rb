@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
+  acts_as_token_authentication_handler_for User, fallback: :none
   protect_from_forgery with: :exception
   helper_method :current_user_, :user_signed_in_?
-  acts_as_token_authentication_handler_for User, fallback: :devise
-
 
   def require_authentication
     # authenticate_or_request_with_http_basic do |u,p|
@@ -12,8 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate
-    redirect_to :login unless user_signed_in_?
-
+    redirect_to sign_up_path unless user_signed_in_?
   end
 
   def current_user_

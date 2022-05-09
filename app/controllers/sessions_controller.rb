@@ -28,7 +28,9 @@ class SessionsController < ApplicationController
       format.json do
         if user.encrypted_password == encrypted_password
           render json: {
-            success: true,
+            id: user.id,
+            ful_name:user.full_name,
+            login: user.login,
             auth_token: user.authentication_token,
             email: user.email
           }

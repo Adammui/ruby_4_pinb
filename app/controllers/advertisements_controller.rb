@@ -67,7 +67,7 @@ class AdvertisementsController < ApplicationController
     respond_to do |format|
       @advertisement = Advertisement.new(advertisement_params)
       if @advertisement.save
-        format.json { render :show, status: :created, location: @advertisement }
+        format.json { render json: @advertisement }
       else
         format.json { render json: @advertisement.errors, status: :unprocessable_entity }
       end
@@ -77,7 +77,7 @@ class AdvertisementsController < ApplicationController
     respond_to do |format|
       @advertisement = Advertisement.find_by id: params[:id]
       if @advertisement.update(advertisement_params)
-        format.json { render :show, status: :ok, location: @advertisement }
+        format.json { render json:@advertisement }
       else
         format.json { render json: @advertisement.errors, status: :unprocessable_entity }
       end
@@ -85,9 +85,14 @@ class AdvertisementsController < ApplicationController
 
   end
   def destroy_api
-    @advertisement.destroy
+    if @advertisement.destroy
     respond_to do |format|
-      format.json { head :no_content }
+      format.json { render json:{status: 'success' } }
+    end
+    else
+      respond_to do |format|
+        format.json { render json:{status: 'error' } }
+      end
     end
   end
 

@@ -21,7 +21,9 @@ class SessionsController < ApplicationController
     encrypted_password = User.new(password: params[:password]).encrypted_password
     respond_to do |format|
       format.html {  render json: {
-        success: true,
+        id: user.id,
+        ful_name:user.full_name,
+        login: user.login,
         auth_token: user.authentication_token,
         email: user.email
       } }

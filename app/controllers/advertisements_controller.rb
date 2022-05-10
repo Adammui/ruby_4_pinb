@@ -85,6 +85,7 @@ class AdvertisementsController < ApplicationController
 
   end
   def destroy_api
+    @advertisement = Advertisement.find_by id: params[:id]
     if @advertisement.destroy
     respond_to do |format|
       format.json { render json:{status: 'success' } }
@@ -104,6 +105,6 @@ class AdvertisementsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def advertisement_params
-      params.require(:advertisement).permit(:user_id, :text, :image)
+      params.require(:advertisement).permit(:user_id, :text, {:image=>[:url]})
     end
 end

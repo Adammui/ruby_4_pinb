@@ -22,19 +22,21 @@ class SessionsController < ApplicationController
     respond_to do |format|
       format.html {  render json: {
         id: user.id,
-        ful_name:user.full_name,
+        full_name:user.full_name,
         login: user.login,
         auth_token: user.authentication_token,
-        email: user.email
+        email: user.email,
+        role: user.role_id
       } }
       format.json do
         if user.encrypted_password == encrypted_password
           render json: {
             id: user.id,
-            ful_name:user.full_name,
+            full_name:user.full_name,
             login: user.login,
             auth_token: user.authentication_token,
-            email: user.email
+            email: user.email,
+            role: user.role_id
           }
         end
       end

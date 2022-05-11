@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get 'token_auth', to: 'sessions#token_auth', as: 'token_auth'
   get 'create_post', to: 'advertisements#create_api', as: 'create_post'
   get 'update_post', to: 'advertisements#update_api', as: 'update_post'
-  get 'delete_post', to: 'advertisements#delete_api', as: 'delete_post'
+  get 'delete_post', to: 'advertisements#destroy_api', as: 'delete_post'
   get 'logout', to: 'sessions#destroy', as: 'logout'
   root 'advertisements#index'
 end

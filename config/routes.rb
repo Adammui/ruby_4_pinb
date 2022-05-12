@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'sign_up',to: redirect('/users/sign_up'), as: 'sign_up'
   get 'auth/failure', to: redirect('/')
   get 'token_auth', to: 'sessions#token_auth', as: 'token_auth'
+  get 'create_user_api', to:'users#create_user_api', as: 'create_user_api'
   get 'create_post', to: 'advertisements#create_api', as: 'create_post'
   get 'update_post', to: 'advertisements#update_api', as: 'update_post'
   get 'delete_post', to: 'advertisements#destroy_api', as: 'delete_post'

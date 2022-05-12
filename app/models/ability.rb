@@ -16,6 +16,7 @@ class Ability
 
       can :manage, Advertisement
       can :manage, Comment
+      can :destroy_api, Advertisement
     else
 
       can :read, Advertisement
@@ -24,6 +25,15 @@ class Ability
       can :update, Advertisement, user: user
       return unless user.present?
       can :destroy, Advertisement, user: user
+      return unless user.present?
+      can :destroy_api, Advertisement, user: user
+      return unless user.present?
+      can :update_api, Advertisement, user: user
+      return unless user.present?
+      can :create_api, Advertisement, user: user
+
+      can :create_user_api, User
+
 
       can :read, User
       return unless user.present?

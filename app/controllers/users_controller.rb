@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   #before_action :set_user, only: %i[ show edit update destroy ]
-  before_action :authenticate, :require_authentication, except: :index
-  load_and_authorize_resource except: :index
+  before_action :authenticate, :require_authentication, except: [:index, :create_user_api]
+  load_and_authorize_resource except: [:index, :create_user_api]
   # GET /users or /users.json
   def index
     @users = User.all
@@ -57,6 +57,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def create_user_api
+    @user = User.new(user_params)
+
+    respond_to do |format|
+      if @user.save
+        format.html { render json: @user }
+        format.json { render json: @user }
+      else
+        format.html { render json: {status: 'error'} }
+        format.json { render json: {status: 'error'} }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
   #def set_user
@@ -66,6 +80,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:role_id , :id,:login, :full_name, :birthday, :email, :password)
+      params.require(:user).permit(:role_id , :id, :login, :full_name, :email, :password)
     end
 end

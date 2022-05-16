@@ -70,6 +70,19 @@ class UsersController < ApplicationController
       end
     end
   end
+  def update_user_api
+    respond_to do |format|
+      @user = User.find_by id: params[:id]
+      if @user.update(user_params)
+        format.json { render json:@user }
+        format.html { render json: @user }
+      else
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.html { render json: {status: 'error'} }
+      end
+    end
+
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -80,6 +93,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:role_id , :id, :login, :full_name, :email, :password)
+      params.require(:user).permit(:role_id , :id, :login, :full_name, :email,:password)
     end
 end

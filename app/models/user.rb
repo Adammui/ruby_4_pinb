@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :comments, dependent: :destroy
+  has_many :advertisements, dependent: :destroy
   belongs_to :role
   before_validation :assign_role
   acts_as_token_authenticatable
